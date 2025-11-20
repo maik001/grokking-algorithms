@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big O time execution example</title>
+    <h2>Different algorithm run time execution (Big O Notation)</h2>
+    <h3>Draw a grid with 16 divisions. What algorithm use in this case?</h3>
+    
+	<h4>Algorithm 1</h4>
+	<p>Drawing the grid one step per time</p>
+	<p>O(n) | O(16)</p>
+	<div id="grid1"></div>
+
+	<h4>Algorithm 2</h4>
+	<p>If the grid is like a paper, you can fold the paper to make two divisions with this operation!</p>
+	<p>O(log n) | O(log 16)</p>
+	<div id="grid2"></div>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+	function drawGridCommon() {
+		grid = document.getElementById("grid1");
+
+		for (var i = 1; i <= 16; i++) {
+			let div = document.createElement('div');
+			div.style.height = "20px";
+			div.style.width = "20px";
+			div.style.backgroundColor = "red";
+			div.style.margin = "1px";
+			div.style.display = "inline-block";
+			grid.appendChild(div);
+			if(i % 4 == 0) {
+				grid.appendChild(document.createElement('div'));
+			}
+		}
+	}
+
+	function drawGridFolding() {
+		grid = document.getElementById("grid2");
+
+		for(var i = 1; i <= 16; i > 1 ? i*=i : i++) {
+			let div = document.createElement('div');
+			div.style.height = "20px";
+			div.style.width = "20px";
+			div.style.backgroundColor = "red";
+			div.style.margin = "1px";
+			div.style.display = "inline-block";
+			grid.appendChild(div);
+			if(i % 2 == 0 && i < 4) {
+				grid.appendChild(document.createElement('div'));
+			}
+			console.log(i);
+		}
+	}
+
+	drawGridCommon();
+	drawGridFolding();
+</script>
